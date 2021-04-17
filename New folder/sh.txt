@@ -1,0 +1,16 @@
+$path = ".\dockerUB.pem"
+# Reset to remove explicit permissions
+icacls.exe $path /reset
+# Give current user explicit read-permission
+icacls.exe $path /GRANT:R "$($env:USERNAME):(R)"
+# Disable inheritance and remove inherited permissions
+icacls.exe $path /inheritance:r
+
+
+icacls.exe $path /reset\
+
+
+
+
+
+ssh -i "DockerU.pem" ubuntu@ec2-3-12-197-142.us-east-2.compute.amazonaws.com
